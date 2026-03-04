@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>EU Governance & Funding Landscape: WOD-FLOW</title>
+  <title>EU Governance & Funding Landscape: WOD FLOW</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.development.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.development.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
@@ -36,7 +36,7 @@
       mission:   { id: "mission",   label: "EU Mission: Ocean & Waters",   sub: "€115M+ · deadline Sept 23, 2026",       color: "#15803d", tier: 3 },
       forum:     { id: "forum",     label: "European Forum",               sub: "Ocean Observation · top-down coord.",   color: "#6b21a8", tier: 4 },
       ioc:       { id: "ioc",       label: "IOC-UNESCO / GOOS",            sub: "International Alliance Partner",        color: "#4c1d95", tier: 4 },
-      wodflow:   { id: "wodip",     label: "WOD-FLOW",                     sub: "WOD Workflow Improvement Project · TARGET",      color: "#dc2626", tier: 4 },
+      wodflow:   { id: "wodflow",   label: "WODFLOW",                      sub: "WOD FLOW · Improving WOD Data Workflows", color: "#dc2626", tier: 4 },
     };
 
     const edges = [
@@ -47,7 +47,7 @@
       ["moi","edito"],["vliz","edito"],
       ["oceanact","oceaneye"],["oceanact","forum"],
       ["oceaneye","ioc"],["oceaneye","wodflow"],
-      ["neptune","wodip"],
+      ["neptune","wodflow"],
       ["mission","edito"],["mission","wodflow"],
       ["ioc","wodflow"],["forum","wodflow"],
       ["edito","wodflow"],
@@ -56,23 +56,23 @@
 
     const details = {
       ec:        { door: null,        note: "Sets policy direction via the European Ocean Pact (June 2025). Driving the Ocean Act as a legal mandate for coordinated observing. Top-down leadership model explicitly endorsed." },
-      defis:     { door: "Indirect",  note: "Funds Copernicus broadly. Not a direct WODIP grant door, but shapes CMEMS data scope and sustains the satellite backbone that WOD complements with in-situ records." },
+      defis:     { door: "Indirect",  note: "Funds Copernicus broadly. Not a direct WODFLOW grant door, but shapes CMEMS data scope and sustains the satellite backbone that WOD complements with in-situ records." },
       mare:      { door: "Watch",     note: "Funds EMODnet. Could include WOD interoperability in future EMODnet calls. VLIZ is the key contact for intelligence on upcoming call language." },
-      rtd:       { door: "PRIMARY",   note: "Controls Horizon Europe grants. The key DG for WODIP funding via OceanEYE, Mission Neptune, and Mission Ocean & Waters calls." },
-      oceanact:  { door: "Strategic", note: "The proposed legal vehicle implementing the European Ocean Pact. Establishes 'critical ocean infrastructure' as a legal concept — the exact framing WODIP needs to claim sustained operational funding rather than project grants." },
-      cmems:     { door: "Partner",   note: "IFREMER synchronises quarterly WOD updates for Copernicus Marine users. Argo uses WOD as reference climatology. Strong downstream user community for WODIP outputs." },
+      rtd:       { door: "PRIMARY",   note: "Controls Horizon Europe grants. The key DG for WODFLOW funding via OceanEYE, Mission Neptune, and Mission Ocean & Waters calls." },
+      oceanact:  { door: "Strategic", note: "The proposed legal vehicle implementing the European Ocean Pact. Establishes 'critical ocean infrastructure' as a legal concept — the exact framing WODFLOW needs to claim sustained operational funding rather than project grants." },
+      cmems:     { door: "Partner",   note: "IFREMER synchronises quarterly WOD updates for Copernicus Marine users. Argo uses WOD as reference climatology. Strong downstream user community for WODFLOW outputs." },
       emodnet:   { door: "Partner",   note: "7 disciplines including bathymetry. 130+ consortium organisations. VLIZ is your inside contact. Potential for WOD-compatible format advocacy in next EMODnet phase." },
-      horizon:   { door: "PRIMARY",   note: "€50M for OceanEYE (2026-27). €115M+ for Mission Ocean & Waters calls (deadline Sept 23, 2026). Mission Neptune funded here. The primary grant vehicle for WODIP." },
-      wisemarine:{ door: "Watch",     note: "EU knowledge-to-policy interface for marine and maritime affairs. Sits between governance and data services. Relevant for WODIP's 'data to storytelling' and FAIR data positioning." },
+      horizon:   { door: "PRIMARY",   note: "€50M for OceanEYE (2026-27). €115M+ for Mission Ocean & Waters calls (deadline Sept 23, 2026). Mission Neptune funded here. The primary grant vehicle for WODFLOW." },
+      wisemarine:{ door: "Watch",     note: "EU knowledge-to-policy interface for marine and maritime affairs. Sits between governance and data services. Relevant for WODFLOW's 'data to storytelling' and FAIR data positioning." },
       moi:       { door: "Partner",   note: "Mercator Ocean International operates CMEMS. Maria Hood (Mercator) attended Meeting #1. Key technical partner for federated QC and operational data flows." },
       vliz:      { door: "Partner",   note: "VLIZ presented the EU landscape at Meeting #2 and offered IODE hosting support. Active ally. The EMODnet consortium includes 130+ organisations across 7 disciplines." },
-      edito:     { door: "Strategic", note: "EU Digital Twin Ocean, operational target 2030. Co-operated by MOI + VLIZ. Explicitly depends on continuous high-quality in-situ data — 'you can't ditto without data.' WODIP feeds EDITO." },
-      oceaneye:  { door: "TARGET",    note: "Launched March 2, 2026 by von der Leyen. €50M Horizon Europe. International Alliance pledging event: September 2026. IOC already joined. WODIP should be positioned as a concrete Alliance deliverable before the September pledge window." },
-      neptune:   { door: "TARGET",    note: "NEW. Mission Neptune is the operational pillar for closing observation gaps — specifically deep-sea and polar oceans. Directly aligned with WODIP's scope. Funded via Horizon Europe. Needs to be tracked as a parallel entry point alongside OceanEYE." },
+      edito:     { door: "Strategic", note: "EU Digital Twin Ocean, operational target 2030. Co-operated by MOI + VLIZ. Explicitly depends on continuous high-quality in-situ data — 'you can't ditto without data.' WODFLOW feeds EDITO." },
+      oceaneye:  { door: "TARGET",    note: "Launched March 2, 2026 by von der Leyen. €50M Horizon Europe. International Alliance pledging event: September 2026. IOC already joined. WODFLOW should be positioned as a concrete Alliance deliverable before the September pledge window." },
+      neptune:   { door: "TARGET",    note: "NEW. Mission Neptune is the operational pillar for closing observation gaps — specifically deep-sea and polar oceans. Directly aligned with WODFLOW's scope. Funded via Horizon Europe. Needs to be tracked as a parallel entry point alongside OceanEYE." },
       mission:   { door: "TARGET",    note: "2026 Horizon calls open Feb 4, deadline Sept 23, 2026. OCEAN-05 (Regional Digital Twin) most relevant. €115M+ indicative budget. Complementary to OceanEYE pathway." },
-      forum:     { door: "Strategic", note: "NEW. The proposed European Forum for Ocean Observation — EC-led, ministerial-level, mandate for top-down coordination. This is where WODIP's legitimacy as critical infrastructure gets established before funding conversations happen." },
-      ioc:       { door: "Partner",   note: "IOC already joined OceanEYE International Alliance. Joanna Post (IODE) is your contact. WOD is an IOC programme — this governance hook is WODIP's strongest legitimacy lever inside the EU system." },
-      wodip:     { door: "OUR ASK",   note: "Positioned not just as a funding recipient but as an exemplar of the federated, interoperable model the EC is explicitly trying to build. Deliverables: (1) federated QC framework, (2) documentation co-development, (3) data mirroring. Entry via OceanEYE Alliance + Mission Neptune + Mission Ocean & Waters." },
+      forum:     { door: "Strategic", note: "NEW. The proposed European Forum for Ocean Observation — EC-led, ministerial-level, mandate for top-down coordination. This is where WODFLOW's legitimacy as critical infrastructure gets established before funding conversations happen." },
+      ioc:       { door: "Partner",   note: "IOC already joined OceanEYE International Alliance. Joanna Post (IODE) is your contact. WOD is an IOC programme — this governance hook is WODFLOW's strongest legitimacy lever inside the EU system." },
+      wodflow:   { door: "OUR ASK",   note: "Positioned not just as a funding recipient but as an exemplar of the federated, interoperable model the EC is explicitly trying to build. Deliverables: (1) federated QC framework, (2) documentation co-development, (3) data mirroring. Entry via OceanEYE Alliance + Mission Neptune + Mission Ocean & Waters." },
     };
 
     const doorColors = {
@@ -101,7 +101,7 @@
       4: { h: 42, wDefault: 158, wWide: 215, fs: 9.5, fsSub: 7.5 },
     };
 
-    const wideNodes = new Set(["vliz", "oceaneye", "mission", "neptune", "wisemarine"]);
+    const wideNodes = new Set(["vliz", "oceaneye", "mission", "neptune", "wisemarine", "wodflow"]);
 
     const W = 1100, H = 640;
     const tierY = [55, 150, 265, 378, 510];
@@ -134,7 +134,7 @@
 
             <div style={{ textAlign: "center", marginBottom: 18 }}>
               <div style={{ fontSize: 10, letterSpacing: 4, color: "#64748b", textTransform: "uppercase", marginBottom: 5 }}>EU Marine Data Governance & Funding</div>
-              <h1 style={{ fontSize: 21, fontWeight: 700, color: "#f1f5f9", margin: 0 }}>Mapping the EU Governance and Funding Landscape: WOD IP</h1>
+              <h1 style={{ fontSize: 21, fontWeight: 700, color: "#f1f5f9", margin: 0 }}>Mapping the EU Governance and Funding Landscape: WOD FLOW</h1>
               <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 5 }}>v2 · March 4, 2026 · Incorporates Ocean Act, Mission Neptune, European Forum, Wise Marine · Click any node</div>
             </div>
 
@@ -179,7 +179,7 @@
                   const dc = isOceanEye ? "#ffffff" : (details[node.id]?.door ? doorColors[details[node.id].door] : node.color);
                   const textColor = isOceanEye ? "#000" : "#fff";
                   const subColor  = isOceanEye ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.72)";
-                  const isPulse = node.id === "wodip" || node.id === "oceaneye" || node.id === "neptune";
+                  const isPulse = node.id === "wodflow" || node.id === "oceaneye" || node.id === "neptune";
                   const isNew   = node.id === "neptune" || node.id === "forum" || node.id === "oceanact" || node.id === "wisemarine";
 
                   return (
@@ -237,7 +237,7 @@
             <div style={{ marginTop: 14, background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)", borderRadius: 10, padding: "13px 18px" }}>
               <div style={{ fontSize: 10, color: "#fca5a5", fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 5 }}>Strategic Window · Act Now</div>
               <p style={{ margin: 0, fontSize: 13, color: "#fecaca", lineHeight: 1.65 }}>
-                OceanEYE (March 2, 2026) and Mission Neptune together define two parallel Horizon Europe pathways for WODIP. IOC has already joined the OceanEYE Alliance. The September 2026 pledging event is the deadline for positioning WODIP as a concrete Alliance deliverable. Simultaneously, the Ocean Act's "critical infrastructure" framing is the legal anchor for sustained operational funding — not just project grants. The European Forum for Ocean Observation is where that legitimacy case must be made first.
+                OceanEYE (March 2, 2026) and Mission Neptune together define two parallel Horizon Europe pathways for WODFLOW. IOC has already joined the OceanEYE Alliance. The September 2026 pledging event is the deadline for positioning WODFLOW as a concrete Alliance deliverable. Simultaneously, the Ocean Act's "critical infrastructure" framing is the legal anchor for sustained operational funding — not just project grants. The European Forum for Ocean Observation is where that legitimacy case must be made first.
               </p>
             </div>
 
