@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -36,7 +36,7 @@
       mission:   { id: "mission",   label: "EU Mission: Ocean & Waters",   sub: "€115M+ · deadline Sept 23, 2026",       color: "#15803d", tier: 3 },
       forum:     { id: "forum",     label: "European Forum",               sub: "Ocean Observation · top-down coord.",   color: "#6b21a8", tier: 4 },
       ioc:       { id: "ioc",       label: "IOC-UNESCO / GOOS",            sub: "International Alliance Partner",        color: "#4c1d95", tier: 4 },
-      wodip:     { id: "wodip",     label: "WOD-FLOW",                     sub: "WOD Workflow Improvement Project · TARGET",      color: "#dc2626", tier: 4 },
+      wod-flow:  { id: "wod-flow",  label: "WOD-FLOW",                     sub: "WOD Workflow Improvement Project · TARGET",      color: "#dc2626", tier: 4 },
     };
 
     const edges = [
@@ -46,11 +46,11 @@
       ["horizon","oceaneye"],["horizon","mission"],["horizon","neptune"],["horizon","edito"],
       ["moi","edito"],["vliz","edito"],
       ["oceanact","oceaneye"],["oceanact","forum"],
-      ["oceaneye","ioc"],["oceaneye","wodip"],
-      ["neptune","wodip"],
-      ["mission","edito"],["mission","wodip"],
-      ["ioc","wodip"],["forum","wodip"],
-      ["edito","wodip"],
+      ["oceaneye","ioc"],["oceaneye","wod-flow"],
+      ["neptune","wod-flow"],
+      ["mission","edito"],["mission","wod-flow"],
+      ["ioc","wod-flow"],["forum","wod-flow"],
+      ["edito","wod-flow"],
       ["wisemarine","forum"],
     ];
 
@@ -72,7 +72,7 @@
       mission:   { door: "TARGET",    note: "2026 Horizon calls open Feb 4, deadline Sept 23, 2026. OCEAN-05 (Regional Digital Twin) most relevant. €115M+ indicative budget. Complementary to OceanEYE pathway." },
       forum:     { door: "Strategic", note: "NEW. The proposed European Forum for Ocean Observation — EC-led, ministerial-level, mandate for top-down coordination. This is where WODIP's legitimacy as critical infrastructure gets established before funding conversations happen." },
       ioc:       { door: "Partner",   note: "IOC already joined OceanEYE International Alliance. Joanna Post (IODE) is your contact. WOD is an IOC programme — this governance hook is WODIP's strongest legitimacy lever inside the EU system." },
-      wodip:     { door: "OUR ASK",   note: "Positioned not just as a funding recipient but as an exemplar of the federated, interoperable model the EC is explicitly trying to build. Deliverables: (1) federated QC framework, (2) documentation co-development, (3) data mirroring. Entry via OceanEYE Alliance + Mission Neptune + Mission Ocean & Waters." },
+      wod-flow:     { door: "OUR ASK",   note: "Positioned not just as a funding recipient but as an exemplar of the federated, interoperable model the EC is explicitly trying to build. Deliverables: (1) federated QC framework, (2) documentation co-development, (3) data mirroring. Entry via OceanEYE Alliance + Mission Neptune + Mission Ocean & Waters." },
     };
 
     const doorColors = {
@@ -179,7 +179,7 @@
                   const dc = isOceanEye ? "#ffffff" : (details[node.id]?.door ? doorColors[details[node.id].door] : node.color);
                   const textColor = isOceanEye ? "#000" : "#fff";
                   const subColor  = isOceanEye ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.72)";
-                  const isPulse = node.id === "wodip" || node.id === "oceaneye" || node.id === "neptune";
+                  const isPulse = node.id === "wod-flow" || node.id === "oceaneye" || node.id === "neptune";
                   const isNew   = node.id === "neptune" || node.id === "forum" || node.id === "oceanact" || node.id === "wisemarine";
 
                   return (
