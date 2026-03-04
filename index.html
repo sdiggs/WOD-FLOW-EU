@@ -19,108 +19,126 @@
     const { useState } = React;
 
     const nodes = {
-      ec: { id: "ec", label: "European Commission", sub: "", color: "#003399", text: "#fff", tier: 0 },
-      defis: { id: "defis", label: "DG DEFIS", sub: "Defence, Industry & Space", color: "#1a4fa0", text: "#fff", tier: 1 },
-      mare: { id: "mare", label: "DG MARE", sub: "Maritime Affairs & Fisheries", color: "#006994", text: "#fff", tier: 1 },
-      rtd: { id: "rtd", label: "DG RTD", sub: "Research & Innovation", color: "#2d6a4f", text: "#fff", tier: 1 },
-      cmems: { id: "cmems", label: "Copernicus Marine (CMEMS)", sub: "Remote / Earth Observations", color: "#2563eb", text: "#fff", tier: 2 },
-      emodnet: { id: "emodnet", label: "EMODnet", sub: "In Situ / Marine Observations", color: "#0e7490", text: "#fff", tier: 2 },
-      horizon: { id: "horizon", label: "Horizon Europe", sub: "Research & Innovation Funding", color: "#16a34a", text: "#fff", tier: 2 },
-      moi: { id: "moi", label: "Mercator Ocean International", sub: "CMEMS Operator", color: "#3b82f6", text: "#fff", tier: 3 },
-      vliz: { id: "vliz", label: "130 orgs, e.g. VLIZ and SSBE", sub: "EMODnet Secretariat + 7 Disciplines", color: "#0891b2", text: "#fff", tier: 3 },
-      edito: { id: "edito", label: "EDITO", sub: "EU Digital Twin Ocean", color: "#7c3aed", text: "#fff", tier: 3 },
-      oceaneye: { id: "oceaneye", label: "OceanEYE", sub: "Launched Mar 2, 2026 · €50M Horizon Europe", color: "#b45309", text: "#fff", tier: 3 },
-      mission: { id: "mission", label: "EU Mission: Ocean & Waters", sub: "Restore by 2030 · €115M+ 2026 calls", color: "#15803d", text: "#fff", tier: 3 },
-      ioc: { id: "ioc", label: "IOC-UNESCO / GOOS", sub: "International Alliance Partner", color: "#6b21a8", text: "#fff", tier: 4 },
-      wodip: { id: "wodip", label: "WODIP", sub: "WOD Improvement Project · TARGET ENTRY POINT", color: "#dc2626", text: "#fff", tier: 4 },
+      ec:        { id: "ec",        label: "European Commission",          sub: "Policy & Legal Authority",              color: "#003399", tier: 0 },
+      defis:     { id: "defis",     label: "DG DEFIS",                     sub: "Defence, Industry & Space",             color: "#1a4fa0", tier: 1 },
+      mare:      { id: "mare",      label: "DG MARE",                      sub: "Maritime Affairs & Fisheries",          color: "#006994", tier: 1 },
+      rtd:       { id: "rtd",       label: "DG RTD",                       sub: "Research & Innovation",                 color: "#2d6a4f", tier: 1 },
+      oceanact:  { id: "oceanact",  label: "Ocean Act",                    sub: "Legal vehicle · Ocean Pact",            color: "#374151", tier: 1 },
+      cmems:     { id: "cmems",     label: "Copernicus Marine (CMEMS)",    sub: "Remote / Earth Observations",           color: "#2563eb", tier: 2 },
+      emodnet:   { id: "emodnet",   label: "EMODnet",                      sub: "In Situ / Marine Observations",         color: "#0e7490", tier: 2 },
+      horizon:   { id: "horizon",   label: "Horizon Europe",               sub: "Research & Innovation Funding",         color: "#16a34a", tier: 2 },
+      wisemarine:{ id: "wisemarine",label: "Wise Marine",                  sub: "Knowledge & Policy Interface",          color: "#0f766e", tier: 2 },
+      moi:       { id: "moi",       label: "Mercator Ocean Intl.",         sub: "CMEMS Operator",                        color: "#3b82f6", tier: 3 },
+      vliz:      { id: "vliz",      label: "130 orgs, e.g. VLIZ and SSBE", sub: "EMODnet Secretariat + 7 Disciplines",  color: "#0891b2", tier: 3 },
+      edito:     { id: "edito",     label: "EDITO / DTO",                  sub: "EU Digital Twin · op. by 2030",         color: "#7c3aed", tier: 3 },
+      oceaneye:  { id: "oceaneye",  label: "OceanEYE",                     sub: "€50M · Launched Mar 2, 2026",           color: "#ffffff", tier: 3 },
+      neptune:   { id: "neptune",   label: "Mission Neptune",              sub: "Operational pillar · deep-sea gaps",    color: "#0d4f8b", tier: 3 },
+      mission:   { id: "mission",   label: "EU Mission: Ocean & Waters",   sub: "€115M+ · deadline Sept 23, 2026",       color: "#15803d", tier: 3 },
+      forum:     { id: "forum",     label: "European Forum",               sub: "Ocean Observation · top-down coord.",   color: "#6b21a8", tier: 4 },
+      ioc:       { id: "ioc",       label: "IOC-UNESCO / GOOS",            sub: "International Alliance Partner",        color: "#4c1d95", tier: 4 },
+      wodip:     { id: "wodip",     label: "WODIP",                        sub: "WOD Improvement Project · TARGET",      color: "#dc2626", tier: 4 },
     };
 
     const edges = [
-      ["ec", "defis"], ["ec", "mare"], ["ec", "rtd"],
-      ["defis", "cmems"], ["mare", "emodnet"], ["rtd", "horizon"],
-      ["cmems", "moi"], ["emodnet", "vliz"],
-      ["horizon", "oceaneye"], ["horizon", "mission"], ["horizon", "edito"],
-      ["moi", "edito"], ["vliz", "edito"],
-      ["oceaneye", "ioc"], ["oceaneye", "wodip"],
-      ["mission", "edito"], ["mission", "wodip"],
-      ["ioc", "wodip"],
-      ["edito", "wodip"],
+      ["ec","defis"],["ec","mare"],["ec","rtd"],["ec","oceanact"],
+      ["defis","cmems"],["mare","emodnet"],["rtd","horizon"],["oceanact","wisemarine"],
+      ["cmems","moi"],["emodnet","vliz"],
+      ["horizon","oceaneye"],["horizon","mission"],["horizon","neptune"],["horizon","edito"],
+      ["moi","edito"],["vliz","edito"],
+      ["oceanact","oceaneye"],["oceanact","forum"],
+      ["oceaneye","ioc"],["oceaneye","wodip"],
+      ["neptune","wodip"],
+      ["mission","edito"],["mission","wodip"],
+      ["ioc","wodip"],["forum","wodip"],
+      ["edito","wodip"],
+      ["wisemarine","forum"],
     ];
 
     const details = {
-      ec: { door: null, note: "Umbrella governance body. Sets policy direction via the European Ocean Pact (June 2025)." },
-      defis: { door: "Indirect", note: "Funds Copernicus programme broadly. Not a direct grant door for WODIP, but shapes CMEMS scope." },
-      mare: { door: "Watch", note: "Funds EMODnet. Could include WOD interoperability in future EMODnet calls. VLIZ is the key contact for intelligence." },
-      rtd: { door: "PRIMARY", note: "Controls Horizon Europe grants. The key DG for WODIP funding via OceanEYE and Mission calls." },
-      cmems: { door: "Partner", note: "IFREMER synchronises quarterly WOD updates for Copernicus Marine users. Argo uses WOD as reference. Strong user community." },
-      emodnet: { door: "Partner", note: "7 disciplines including bathymetry. VLIZ is your inside contact. Potential for WOD-compatible format advocacy." },
-      horizon: { door: "PRIMARY", note: "€50M for OceanEYE (2026-27). €115M+ for Mission calls open now (deadline Sept 23, 2026). The funding vehicle." },
-      moi: { door: "Partner", note: "Mercator Ocean International operates CMEMS. Maria Hood (Mercator) attended Meeting #1. Key technical partner for federated QC." },
-      vliz: { door: "Partner", note: "VLIZ presented the EU landscape at Meeting #2 and offered IODE hosting support. Active ally. The EMODnet consortium includes 130+ organisations." },
-      edito: { door: "Strategic", note: "EU Digital Twin Ocean co-operated by MOI + VLIZ. HORIZON-MISS-2026-03-OCEAN-05 funds regional DTO components. WODIP data could feed EDITO." },
-      oceaneye: { door: "TARGET", note: "Launched March 2, 2026 by von der Leyen. €50M Horizon Europe. International Alliance pledging event: September 2026. IOC already joined." },
-      mission: { door: "TARGET", note: "2026 Horizon calls open Feb 4, deadline Sept 23, 2026. OCEAN-05 (Regional DTO) most relevant. €115M+ indicative budget." },
-      ioc: { door: "Partner", note: "IOC already joined OceanEYE International Alliance. Joanna Post (IODE) is your contact. WOD is an IOC programme — leverage this governance hook." },
-      wodip: { door: "OUR ASK", note: "The WOD Improvement Project needs: (1) federated QC framework, (2) documentation co-development, (3) data mirroring infrastructure. EU funding through OceanEYE/Mission calls." },
+      ec:        { door: null,        note: "Sets policy direction via the European Ocean Pact (June 2025). Driving the Ocean Act as a legal mandate for coordinated observing. Top-down leadership model explicitly endorsed." },
+      defis:     { door: "Indirect",  note: "Funds Copernicus broadly. Not a direct WODIP grant door, but shapes CMEMS data scope and sustains the satellite backbone that WOD complements with in-situ records." },
+      mare:      { door: "Watch",     note: "Funds EMODnet. Could include WOD interoperability in future EMODnet calls. VLIZ is the key contact for intelligence on upcoming call language." },
+      rtd:       { door: "PRIMARY",   note: "Controls Horizon Europe grants. The key DG for WODIP funding via OceanEYE, Mission Neptune, and Mission Ocean & Waters calls." },
+      oceanact:  { door: "Strategic", note: "The proposed legal vehicle implementing the European Ocean Pact. Establishes 'critical ocean infrastructure' as a legal concept — the exact framing WODIP needs to claim sustained operational funding rather than project grants." },
+      cmems:     { door: "Partner",   note: "IFREMER synchronises quarterly WOD updates for Copernicus Marine users. Argo uses WOD as reference climatology. Strong downstream user community for WODIP outputs." },
+      emodnet:   { door: "Partner",   note: "7 disciplines including bathymetry. 130+ consortium organisations. VLIZ is your inside contact. Potential for WOD-compatible format advocacy in next EMODnet phase." },
+      horizon:   { door: "PRIMARY",   note: "€50M for OceanEYE (2026-27). €115M+ for Mission Ocean & Waters calls (deadline Sept 23, 2026). Mission Neptune funded here. The primary grant vehicle for WODIP." },
+      wisemarine:{ door: "Watch",     note: "EU knowledge-to-policy interface for marine and maritime affairs. Sits between governance and data services. Relevant for WODIP's 'data to storytelling' and FAIR data positioning." },
+      moi:       { door: "Partner",   note: "Mercator Ocean International operates CMEMS. Maria Hood (Mercator) attended Meeting #1. Key technical partner for federated QC and operational data flows." },
+      vliz:      { door: "Partner",   note: "VLIZ presented the EU landscape at Meeting #2 and offered IODE hosting support. Active ally. The EMODnet consortium includes 130+ organisations across 7 disciplines." },
+      edito:     { door: "Strategic", note: "EU Digital Twin Ocean, operational target 2030. Co-operated by MOI + VLIZ. Explicitly depends on continuous high-quality in-situ data — 'you can't ditto without data.' WODIP feeds EDITO." },
+      oceaneye:  { door: "TARGET",    note: "Launched March 2, 2026 by von der Leyen. €50M Horizon Europe. International Alliance pledging event: September 2026. IOC already joined. WODIP should be positioned as a concrete Alliance deliverable before the September pledge window." },
+      neptune:   { door: "TARGET",    note: "NEW. Mission Neptune is the operational pillar for closing observation gaps — specifically deep-sea and polar oceans. Directly aligned with WODIP's scope. Funded via Horizon Europe. Needs to be tracked as a parallel entry point alongside OceanEYE." },
+      mission:   { door: "TARGET",    note: "2026 Horizon calls open Feb 4, deadline Sept 23, 2026. OCEAN-05 (Regional Digital Twin) most relevant. €115M+ indicative budget. Complementary to OceanEYE pathway." },
+      forum:     { door: "Strategic", note: "NEW. The proposed European Forum for Ocean Observation — EC-led, ministerial-level, mandate for top-down coordination. This is where WODIP's legitimacy as critical infrastructure gets established before funding conversations happen." },
+      ioc:       { door: "Partner",   note: "IOC already joined OceanEYE International Alliance. Joanna Post (IODE) is your contact. WOD is an IOC programme — this governance hook is WODIP's strongest legitimacy lever inside the EU system." },
+      wodip:     { door: "OUR ASK",   note: "Positioned not just as a funding recipient but as an exemplar of the federated, interoperable model the EC is explicitly trying to build. Deliverables: (1) federated QC framework, (2) documentation co-development, (3) data mirroring. Entry via OceanEYE Alliance + Mission Neptune + Mission Ocean & Waters." },
     };
 
     const doorColors = {
-      "PRIMARY": "#16a34a",
-      "TARGET": "#dc2626",
-      "OUR ASK": "#7c3aed",
-      "Partner": "#0891b2",
+      "PRIMARY":   "#16a34a",
+      "TARGET":    "#dc2626",
+      "OUR ASK":   "#7c3aed",
+      "Partner":   "#0891b2",
       "Strategic": "#9333ea",
-      "Watch": "#d97706",
-      "Indirect": "#6b7280",
+      "Watch":     "#d97706",
+      "Indirect":  "#6b7280",
     };
 
-    const BOX_W = 160;
-    const BOX_W_WIDE = 210;
-    const BOX_H = 40;
+    const tierLabels = [
+      "",
+      "Directorate-General + Legal Instrument",
+      "Programme Level + Key Services",
+      "Operators / Initiatives",
+      "Governance Forums + Entry Points",
+    ];
+
+    const tierBox = {
+      0: { h: 42, wDefault: 158, wWide: 215, fs: 9.5, fsSub: 7.5 },
+      1: { h: 42, wDefault: 158, wWide: 215, fs: 9.5, fsSub: 7.5 },
+      2: { h: 42, wDefault: 158, wWide: 215, fs: 9.5, fsSub: 7.5 },
+      3: { h: 34, wDefault: 132, wWide: 178, fs:  8.5, fsSub: 7.0 },
+      4: { h: 42, wDefault: 158, wWide: 215, fs: 9.5, fsSub: 7.5 },
+    };
+
+    const wideNodes = new Set(["vliz", "oceaneye", "mission", "neptune", "wisemarine"]);
+
+    const W = 1100, H = 640;
+    const tierY = [55, 150, 265, 378, 510];
 
     function App() {
       const [selected, setSelected] = useState(null);
-
       const nodeList = Object.values(nodes);
       const byTier = [0,1,2,3,4].map(t => nodeList.filter(n => n.tier === t));
 
-      const nodePositions = {};
-      const W = 960, H = 620;
-      const tierY = [60, 160, 280, 400, 530];
-
+      const pos = {};
       byTier.forEach((tier, ti) => {
         const count = tier.length;
         tier.forEach((node, i) => {
-          const x = count === 1 ? W/2 : 80 + (i / (count - 1)) * (W - 160);
-          nodePositions[node.id] = { x, y: tierY[ti] };
+          const x = count === 1 ? W / 2 : 80 + (i / (count - 1)) * (W - 160);
+          pos[node.id] = { x, y: tierY[ti] };
         });
       });
 
       const sel = selected ? nodes[selected] : null;
       const selDetail = selected ? details[selected] : null;
 
+      const bDims = (node) => {
+        const t = tierBox[node.tier];
+        return { h: t.h, w: wideNodes.has(node.id) ? t.wWide : t.wDefault, fs: t.fs, fsSub: t.fsSub };
+      };
+
       return (
-        <div style={{
-          fontFamily: "'Georgia', serif",
-          background: "linear-gradient(135deg, #0a0e1a 0%, #0d1929 50%, #0a0e1a 100%)",
-          minHeight: "100vh",
-          color: "#e2e8f0",
-          padding: "24px",
-        }}>
-          <div style={{ maxWidth: 1000, margin: "0 auto" }}>
-            <div style={{ textAlign: "center", marginBottom: 20 }}>
-              <div style={{ fontSize: 11, letterSpacing: 4, color: "#64748b", textTransform: "uppercase", marginBottom: 6 }}>
-                EU Marine Data Funding Landscape
-              </div>
-              <h1 style={{ fontSize: 22, fontWeight: 700, color: "#f1f5f9", margin: 0, letterSpacing: -0.5 }}>
-                Mapping the EU Governance and Funding Landscape: WOD IP
-              </h1>
-              <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 6 }}>
-                Updated March 3, 2026 · OceanEYE launched March 2 · Click any node for details
-              </div>
+        <div style={{ fontFamily: "Georgia, serif", background: "linear-gradient(135deg,#0a0e1a,#0d1929,#0a0e1a)", minHeight: "100vh", color: "#e2e8f0", padding: 24 }}>
+          <div style={{ maxWidth: 1140, margin: "0 auto" }}>
+
+            <div style={{ textAlign: "center", marginBottom: 18 }}>
+              <div style={{ fontSize: 10, letterSpacing: 4, color: "#64748b", textTransform: "uppercase", marginBottom: 5 }}>EU Marine Data Governance & Funding</div>
+              <h1 style={{ fontSize: 21, fontWeight: 700, color: "#f1f5f9", margin: 0 }}>Mapping the EU Governance and Funding Landscape: WOD IP</h1>
+              <div style={{ fontSize: 11, color: "#94a3b8", marginTop: 5 }}>v2 · March 4, 2026 · Incorporates Ocean Act, Mission Neptune, European Forum, Wise Marine · Click any node</div>
             </div>
 
-            <div style={{ display: "flex", gap: 16, justifyContent: "center", flexWrap: "wrap", marginBottom: 16 }}>
+            <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap", marginBottom: 14 }}>
               {Object.entries(doorColors).map(([label, color]) => (
                 <div key={label} style={{ display: "flex", alignItems: "center", gap: 5, fontSize: 11 }}>
                   <div style={{ width: 10, height: 10, borderRadius: 2, background: color }} />
@@ -129,72 +147,63 @@
               ))}
             </div>
 
-            <div style={{
-              background: "rgba(255,255,255,0.03)",
-              borderRadius: 12,
-              border: "1px solid rgba(255,255,255,0.08)",
-              overflow: "hidden",
-              marginBottom: 20,
-            }}>
+            <div style={{ background: "rgba(255,255,255,0.03)", borderRadius: 12, border: "1px solid rgba(255,255,255,0.08)", overflow: "hidden", marginBottom: 18 }}>
               <svg width="100%" viewBox={`0 0 ${W} ${H}`} style={{ display: "block" }}>
-                {["", "Directorate-General", "Programme Level", "Operator / Initiative", "Entry Points for WODIP"].map((label, i) => label && (
-                  <text key={i} x={12} y={tierY[i] + 4} fontSize={9} fill="#475569" fontFamily="Georgia, serif">
-                    {label}
-                  </text>
+
+                {tierLabels.map((label, i) => label && (
+                  <text key={i} x={10} y={tierY[i] + 4} fontSize={8.5} fill="#475569" fontFamily="Georgia,serif">{label}</text>
                 ))}
 
                 {edges.map(([from, to], i) => {
-                  const fp = nodePositions[from];
-                  const tp = nodePositions[to];
+                  const fp = pos[from], tp = pos[to];
                   if (!fp || !tp) return null;
-                  const isHighlighted = selected && (from === selected || to === selected);
+                  const fh = bDims(nodes[from]).h;
+                  const th = bDims(nodes[to]).h;
+                  const hi = selected && (from === selected || to === selected);
                   return (
-                    <line
-                      key={i}
-                      x1={fp.x} y1={fp.y + BOX_H / 2}
-                      x2={tp.x} y2={tp.y - BOX_H / 2}
-                      stroke={isHighlighted ? "#f59e0b" : "rgba(148,163,184,0.2)"}
-                      strokeWidth={isHighlighted ? 2 : 1}
-                      strokeDasharray={isHighlighted ? "none" : "4,3"}
-                    />
+                    <line key={i}
+                      x1={fp.x} y1={fp.y + fh / 2}
+                      x2={tp.x} y2={tp.y - th / 2}
+                      stroke={hi ? "#f59e0b" : "rgba(148,163,184,0.18)"}
+                      strokeWidth={hi ? 2 : 1}
+                      strokeDasharray={hi ? "none" : "4,3"} />
                   );
                 })}
 
                 {nodeList.map(node => {
-                  const pos = nodePositions[node.id];
-                  if (!pos) return null;
+                  const p = pos[node.id];
+                  if (!p) return null;
+                  const { h, w, fs, fsSub } = bDims(node);
                   const isSel = selected === node.id;
-                  const isWide = node.id === "vliz";
-                  const bw = isWide ? BOX_W_WIDE : BOX_W;
                   const isOceanEye = node.id === "oceaneye";
-                  const doorColor = isOceanEye ? "#ffffff" : (details[node.id]?.door ? doorColors[details[node.id].door] : node.color);
-                  const textFill = isOceanEye ? "#000" : "#fff";
-                  const subFill = isOceanEye ? "rgba(0,0,0,0.75)" : "rgba(255,255,255,0.75)";
-                  const isWodip = node.id === "wodip";
+                  const dc = isOceanEye ? "#ffffff" : (details[node.id]?.door ? doorColors[details[node.id].door] : node.color);
+                  const textColor = isOceanEye ? "#000" : "#fff";
+                  const subColor  = isOceanEye ? "rgba(0,0,0,0.7)" : "rgba(255,255,255,0.72)";
+                  const isPulse = node.id === "wodip" || node.id === "oceaneye" || node.id === "neptune";
+                  const isNew   = node.id === "neptune" || node.id === "forum" || node.id === "oceanact" || node.id === "wisemarine";
 
                   return (
-                    <g key={node.id} transform={`translate(${pos.x}, ${pos.y})`}
-                      style={{ cursor: "pointer" }}
+                    <g key={node.id} transform={`translate(${p.x},${p.y})`} style={{ cursor: "pointer" }}
                       onClick={() => setSelected(selected === node.id ? null : node.id)}>
-                      <rect
-                        x={-bw / 2} y={-BOX_H / 2} width={bw} height={BOX_H}
-                        rx={6}
-                        fill={doorColor}
-                        opacity={selected && !isSel ? 0.5 : 1}
-                        stroke={isSel ? "#f59e0b" : (isWodip || isOceanEye) ? "#fff" : "rgba(255,255,255,0.15)"}
-                        strokeWidth={isSel ? 2.5 : (isWodip || isOceanEye) ? 1.5 : 1}
-                      />
-                      {(isWodip || isOceanEye) && (
-                        <rect x={-bw / 2} y={-BOX_H / 2} width={bw} height={BOX_H} rx={6}
-                          fill="none" stroke="#f59e0b" strokeWidth={1}
-                          strokeDasharray="3,2" opacity={0.6} />
+                      <rect x={-w/2} y={-h/2} width={w} height={h} rx={5}
+                        fill={dc}
+                        opacity={selected && !isSel ? 0.45 : 1}
+                        stroke={isSel ? "#f59e0b" : isPulse ? "#fff" : "rgba(255,255,255,0.12)"}
+                        strokeWidth={isSel ? 2.5 : isPulse ? 1.5 : 1} />
+                      {isPulse && (
+                        <rect x={-w/2} y={-h/2} width={w} height={h} rx={5}
+                          fill="none" stroke="#f59e0b" strokeWidth={1} strokeDasharray="3,2" opacity={0.55} />
                       )}
-                      <text x={0} y={-4} textAnchor="middle" fontSize={isWide ? 9.5 : 10} fontWeight="700"
-                        fill={textFill} fontFamily="Georgia, serif">
+                      {isNew && (
+                        <rect x={w/2 - 22} y={-h/2 - 1} width={20} height={10} rx={3} fill="#f59e0b" />
+                      )}
+                      {isNew && (
+                        <text x={w/2 - 12} y={-h/2 + 7} textAnchor="middle" fontSize={6} fill="#000" fontWeight="700" fontFamily="Georgia,serif">NEW</text>
+                      )}
+                      <text x={0} y={-3} textAnchor="middle" fontSize={fs} fontWeight="700" fill={textColor} fontFamily="Georgia,serif">
                         {node.label}
                       </text>
-                      <text x={0} y={10} textAnchor="middle" fontSize={8}
-                        fill={subFill} fontFamily="Georgia, serif">
+                      <text x={0} y={h/2 - 8} textAnchor="middle" fontSize={fsSub} fill={subColor} fontFamily="Georgia,serif">
                         {node.sub.split("\n")[0]}
                       </text>
                     </g>
@@ -207,49 +216,31 @@
               background: sel ? "rgba(255,255,255,0.05)" : "rgba(255,255,255,0.02)",
               borderRadius: 10,
               border: `1px solid ${sel ? "rgba(245,158,11,0.4)" : "rgba(255,255,255,0.06)"}`,
-              padding: "16px 20px",
-              minHeight: 80,
-              transition: "all 0.2s",
+              padding: "15px 20px", minHeight: 76, transition: "all 0.2s",
             }}>
               {sel ? (
                 <div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 10 }}>
-                    <div style={{
-                      background: doorColors[selDetail?.door] || sel.color,
-                      color: "#fff", fontSize: 10, fontWeight: 700,
-                      padding: "3px 10px", borderRadius: 20, letterSpacing: 1,
-                      textTransform: "uppercase",
-                    }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 8, flexWrap: "wrap" }}>
+                    <div style={{ background: doorColors[selDetail?.door] || sel.color, color: "#fff", fontSize: 10, fontWeight: 700, padding: "3px 10px", borderRadius: 20, letterSpacing: 1, textTransform: "uppercase" }}>
                       {selDetail?.door || "Context"}
                     </div>
-                    <span style={{ fontSize: 16, fontWeight: 700, color: "#f1f5f9" }}>{sel.label}</span>
-                    {sel.sub && <span style={{ fontSize: 12, color: "#94a3b8" }}>{sel.sub.split("\n")[0]}</span>}
+                    <span style={{ fontSize: 15, fontWeight: 700, color: "#f1f5f9" }}>{sel.label}</span>
+                    <span style={{ fontSize: 11, color: "#94a3b8" }}>{sel.sub.split("\n")[0]}</span>
                   </div>
-                  <p style={{ margin: 0, fontSize: 13, color: "#cbd5e1", lineHeight: 1.6 }}>
-                    {selDetail?.note}
-                  </p>
+                  <p style={{ margin: 0, fontSize: 13, color: "#cbd5e1", lineHeight: 1.65 }}>{selDetail?.note}</p>
                 </div>
               ) : (
-                <div style={{ color: "#475569", fontSize: 13, textAlign: "center", paddingTop: 12 }}>
-                  Click any node to see funding strategy details
-                </div>
+                <div style={{ color: "#475569", fontSize: 13, textAlign: "center", paddingTop: 10 }}>Click any node to see governance and funding strategy details</div>
               )}
             </div>
 
-            <div style={{
-              marginTop: 16,
-              background: "rgba(220,38,38,0.1)",
-              border: "1px solid rgba(220,38,38,0.3)",
-              borderRadius: 10,
-              padding: "14px 18px",
-            }}>
-              <div style={{ fontSize: 11, color: "#fca5a5", fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 6 }}>
-                Strategic Window · Act Now
-              </div>
-              <p style={{ margin: 0, fontSize: 13, color: "#fecaca", lineHeight: 1.6 }}>
-                OceanEYE launched March 2, 2026 with €50M Horizon Europe funding and an International Alliance pledging event in September 2026. IOC has already joined. WODIP needs to be positioned as a concrete deliverable of that Alliance before the September pledge window closes. Your contacts — VLIZ, Joanna Post (IODE), Maria Hood (Mercator), Thierry Carval (IFREMER) — are all inside this system. The door is open.
+            <div style={{ marginTop: 14, background: "rgba(220,38,38,0.1)", border: "1px solid rgba(220,38,38,0.3)", borderRadius: 10, padding: "13px 18px" }}>
+              <div style={{ fontSize: 10, color: "#fca5a5", fontWeight: 700, letterSpacing: 2, textTransform: "uppercase", marginBottom: 5 }}>Strategic Window · Act Now</div>
+              <p style={{ margin: 0, fontSize: 13, color: "#fecaca", lineHeight: 1.65 }}>
+                OceanEYE (March 2, 2026) and Mission Neptune together define two parallel Horizon Europe pathways for WODIP. IOC has already joined the OceanEYE Alliance. The September 2026 pledging event is the deadline for positioning WODIP as a concrete Alliance deliverable. Simultaneously, the Ocean Act's "critical infrastructure" framing is the legal anchor for sustained operational funding — not just project grants. The European Forum for Ocean Observation is where that legitimacy case must be made first.
               </p>
             </div>
+
           </div>
         </div>
       );
